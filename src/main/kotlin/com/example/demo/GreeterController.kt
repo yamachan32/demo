@@ -7,7 +7,9 @@ data class HelloRequest(val name: String)
 
 @RestController
 @RequestMapping("greeter")
-class GreeterController {
+class GreeterController (
+    private val greeter: Greeter
+){
     @GetMapping("/hello")
     fun hello(@RequestParam("name") name: String): HelloResponse {
         return HelloResponse("Hello $name")
@@ -21,6 +23,12 @@ class GreeterController {
     @PostMapping("/hello")
     fun helloByPost(@RequestBody request: HelloRequest): HelloResponse {
         return HelloResponse("Hello ${request.name}")
+    }
+
+    @GetMapping("/hello/byservice/{name}")
+    fun helloByService(@PathVariable("name") name: String): HelloResponse {
+        val message = greeter.sayHello(name)
+        return HelloResponse(message)
     }
 
 }
