@@ -11,6 +11,4 @@ class HelloController {
         model.addAttribute("message", "Hello World!")
         return "index"
     }
-
-
 }

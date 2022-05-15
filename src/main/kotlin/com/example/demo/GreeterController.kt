@@ -1,18 +1,21 @@
 package com.example.demo
 
-import org.springframework.web.bind.annotation.*
-
-data class HelloResponse(val message: String)
-data class HelloRequest(val name: String)
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("greeter")
-class GreeterController (
+class GreeterController(
     private val greeter: Greeter
-){
+) {
     @GetMapping("/hello")
     fun hello(@RequestParam("name") name: String): HelloResponse {
-        return HelloResponse("Hello $name")
+        return HelloResponse("Hello ${name}")
     }
 
     @GetMapping("/hello/{name}")
@@ -30,5 +33,4 @@ class GreeterController (
         val message = greeter.sayHello(name)
         return HelloResponse(message)
     }
-
 }

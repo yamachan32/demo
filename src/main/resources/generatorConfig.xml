@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD
-    MyBatis Generator Configuration 1.0//EN"
+  MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
-    <classPathEntry location="/Users/kohei/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/8.0.23/14d64ac509adccaff444513c12646d93e4ed8be8/mysql-connector-java-8.0.23.jar"/>
+    <!-- mysql-connectorの場所は任意 -->
+    <classPathEntry
+            location="/Users/kohei/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/8.0.23/14d64ac509adccaff444513c12646d93e4ed8be8/mysql-connector-java-8.0.23.jar"/>
     <context id="MySQLTables" targetRuntime="MyBatis3Kotlin">
         <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
         <commentGenerator>
@@ -13,7 +15,7 @@
                 driverClass="com.mysql.jdbc.Driver"
                 connectionURL="jdbc:mysql://127.0.0.1:3306/example"
                 userId="root"
-                password="mysql" >
+                password="mysql">
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
         <javaModelGenerator
@@ -24,6 +26,6 @@
                 targetPackage="com.example.demo.database"
                 targetProject="src/main/kotlin">
         </javaClientGenerator>
-        <table tableName="%"></table>
+        <table tableName="user"/>
     </context>
 </generatorConfiguration>
